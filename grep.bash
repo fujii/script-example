@@ -7,7 +7,7 @@ usage_exit() {
     exit 1
 }
 
-while getopts r:h OPT
+while getopts rh OPT
 do
     case $OPT in
         r)  recursive=1
@@ -29,7 +29,7 @@ shift
 
 for file in "$@";do
     while read line;do
-	if [[ "$line" =~ "$pattern" ]];then
+	if [[ $line =~ $pattern ]];then
 	    echo "$file:$line"
 	fi
     done < "$file"
